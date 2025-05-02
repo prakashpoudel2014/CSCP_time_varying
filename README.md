@@ -5,6 +5,7 @@ It consists of three core class definition folders and one main script to execut
 
 # Description of each folder
 @ACEGridWorld
+
 Defines the grid world with uniform spacing and 4-adjacency connectivity.
 
 Implements Dijkstra’s algorithm to compute minimum-cost paths.
@@ -15,25 +16,55 @@ True and estimated threat fields
 
 Planned paths
 
-Interacts with:
+Interacts with: ParametricThreat class to obtain threat-related costs
 
-ParametricThreat class to obtain threat-related costs
+                SensorNetworkV01 class to determine optimal sensor placements
 
-SensorNetworkV01 class to determine optimal sensor placements
 
-@ParametricThreat: Class defintion of defining the threat filed.
-                   Include member functions to implement the UKF and provide plots for true and estimated threats.
-                   Linked with ACEGridWorld class to define threats on the workspace.
-                   The threat parameters are defined in this class, users can vary the dimensions of the threat parameters as required.
+@ParametricThreat:
 
-@SensorNetworkV01: Class defintion of sensor network.
-                   Include member functions that implement the various sensor placement strategies.
-                   Works with a threat model defined by ParametricThreat class.
-                   Linked with GridWorld to get grid locations for sensors.
+Defines the parametric threat field.
 
-cscp_v03: This is the main file with implementation of a coupled sensor configurationa path planning (CSCP) algorith.
-          Initialize all the classes, and perform iteration counter where the parameters of threats and sensor locations are updated iteratively. 
-          Users can change the sensor configuration scheme or number of sensors, parameters here as required.
+Implements an Unscented Kalman Filter (UKF) to estimate the evolving threat.
+
+Provides plotting tools for true and estimated threats.
+
+Allows customization of threat parameters, including dimensionality and dynamics.
+
+Interacts with: ACEGridWorld to define threat cost at grid locations
+
+
+@SensorNetworkV01:
+
+Defines the sensor network model.
+
+Implements sensor placement strategies, including greedy selection based on Mutual Information (MI).
+
+Interacts with: ParametricThreat to receive threat estimates
+
+                ACEGridWorld to access sensor placement coordinates on the grid
+
+cscp_v03: 
+
+Main driver script to run the CSCP algorithm.
+
+Initializes: Grid world
+
+             Threat field
+
+             Sensor network
+
+Performs iterative updates of: Threat parameters (via UKF)
+
+                               Sensor locations (via MI-based greedy algorithm)
+
+Executes path planning using updated threat estimates.
+
+Allows user customization of: Sensor configuration scheme
+
+                              Number of sensors
+
+                              Threat parameters
                    
                   
 
