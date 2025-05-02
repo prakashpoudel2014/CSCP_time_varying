@@ -1,12 +1,25 @@
 # CSCP_time_varying
-This code solves the coupled sensing and path planning in time varying threat fields.
-This repo consists of 3 subfolders of class. 
+This MATLAB code implements Coupled Sensor Configuration and Path Planning (CSCP) in time-varying threat fields.
+
+It consists of three core class definition folders and one main script to execute the simulation.
 
 # Description of each folder
-@ACEGridWorld: Class defintion of grid world with uniform spacing and 4-adjacency.
-               Includes member functions to implement Dijkastra algorithm and provide CSCP visualizations, true and estimated threat images on the workspace.
-               Linked with ParametricThreat class to get threat costs.
-               Linked with SensorNetworkV01 class for identifying the optimal sensor locations.
+@ACEGridWorld
+Defines the grid world with uniform spacing and 4-adjacency connectivity.
+
+Implements Dijkstra’s algorithm to compute minimum-cost paths.
+
+Provides visualizations of the workspace, including:
+
+True and estimated threat fields
+
+Planned paths
+
+Interacts with:
+
+ParametricThreat class to obtain threat-related costs
+
+SensorNetworkV01 class to determine optimal sensor placements
 
 @ParametricThreat: Class defintion of defining the threat filed.
                    Include member functions to implement the UKF and provide plots for true and estimated threats.
@@ -17,6 +30,10 @@ This repo consists of 3 subfolders of class.
                    Include member functions that implement the various sensor placement strategies.
                    Works with a threat model defined by ParametricThreat class.
                    Linked with GridWorld to get grid locations for sensors.
+
+cscp_v03: This is the main file with implementation of a coupled sensor configurationa path planning (CSCP) algorith.
+          Initialize all the classes, and perform iteration counter where the parameters of threats and sensor locations are updated iteratively. 
+          Users can change the sensor configuration scheme or number of sensors, parameters here as required.
                    
                   
 
