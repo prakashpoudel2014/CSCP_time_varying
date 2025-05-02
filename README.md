@@ -16,9 +16,7 @@ True and estimated threat fields
 
 Planned paths
 
-Interacts with: ParametricThreat class to obtain threat-related costs
-
-                SensorNetworkV01 class to determine optimal sensor placements
+Interacts with: ParametricThreat class to obtain threat-related costs, SensorNetworkV01 class to determine optimal sensor placements
 
 
 @ParametricThreat:
@@ -40,19 +38,14 @@ Defines the sensor network model.
 
 Implements sensor placement strategies, including greedy selection based on Mutual Information (MI).
 
-Interacts with: ParametricThreat to receive threat estimates
+Interacts with: ParametricThreat to receive threat estimate, ACEGridWorld to access sensor placement coordinates on the grid
 
-                ACEGridWorld to access sensor placement coordinates on the grid
 
 cscp_v03: 
 
 Main driver script to run the CSCP algorithm.
 
-Initializes: Grid world
-
-             Threat field
-
-             Sensor network
+Initializes: Grid world, Threat field, Sensor network
 
 Performs iterative updates of: Threat parameters (via UKF)
 
